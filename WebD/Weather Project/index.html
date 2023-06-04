@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SK Weather App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<link rel="stylesheet" href="CSS/style.css">
+
+<style>
+    .colormasti {
+        color: rgb(177, 10, 10);
+        font-family: 'Inconsolata', cursive;
+        margin: 1px;
+    }
+    .colormasti:hover {
+        color: rgba(82, 11, 195, 0.755);
+        text-decoration: underline;
+        
+    }
+    .bottomconfig {
+        padding-left: 600px;
+        display: inline-block;
+        width: 390%;
+        position:absolute;
+
+    }
+   
+</style>
+
+<body>
+    
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" >Weather App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"  type="submit" id="home">Home</a>
+                        
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" type="submit" id="abt">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        
+                       
+                    </li>
+                    
+                </ul>
+                <form class="d-flex" role="search">
+                    <input id="city" class="form-control me-2" type="search" placeholder="Enter City..." aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit" id="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+
+        <body>
+
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                <symbol id="check" viewBox="0 0 16 16">
+                    <title>Check</title>
+                    <path
+                        d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z">
+                    </path>
+                </symbol>
+            </svg>
+
+            <div class="container py-3">
+                <header>
+                    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+                        <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2"
+                                viewBox="0 0 118 94" role="img">
+                                <title></title>
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
+                                    fill="currentColor"></path>
+                            </svg>
+                            <span class="fs-4">Weather...</span>
+                        </a>
+
+                        <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+                           
+                        </nav>
+                    </div>
+
+                    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+                        <div class="colormasti"> <h1 class="display-4 fw-normal"> <h1><span id="cityname"></span> Weather </h1></h1></div>
+                       
+                        <p class="fs-5 text-muted"><h5>Build for an effective Weather Table...</h5></p>
+                    </div>
+                </header>
+
+                <main>
+                    <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                        <div class="col">
+                            <div class="card mb-4 rounded-3 shadow-sm">
+                                <div class="card-header py-3">
+                                    <h4 class="my-0 fw-normal">Temperatures</h4>
+                                </div>
+                                <div class="card-body">
+                                     <h1 class="card-title pricing-card-title"><span id="temp2" ></span><small
+                                            class="text-muted fw-light">&deg;C</small></h1>
+                                    <ul class="list-unstyled mt-3 mb-4">  
+                                        <li>Temperature :<span id="temp" ></span></li>
+                                        <li>Min_Temp : <span id='min_temp'></span> </span></li>
+                                        <li>Max_Temp : <span id="max_temp" ></span></li>
+                                        
+                                        <li>Feels Like : <span id="feels_like" ></span></li>
+                                        
+                                        
+
+
+
+
+                                    </ul>
+                                    
+                                </div>
+                            </div>.
+                        </div>
+                        <div class="col">
+                            <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                                <div class="card-header py-3 text-bg-primary border-primary">
+                                    <h4 class="my-0 fw-normal">Humid Info</h4>
+                                </div>
+                                <div class="card-body">
+                                    <h1 class="card-title pricing-card-title"><span id="humidity2"></span><small
+                                            class="text-muted fw-light">%</small></h1>
+                                    <ul class="list-unstyled mt-3 mb-4">
+                                        <li>Humidity : <span id="humidity" ></span></li>
+                                        <li>Cloud PCT : <span id="cloud_pct" ></span></li>
+                                        
+                                    </ul>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                                <div class="card-header py-3 text-bg-primary border-primary">
+                                    <h4 class="my-0 fw-normal">Air/Wind Info</h4>
+                                </div>
+                                <div class="card-body">
+                                    <h1 class="card-title pricing-card-title"> <span id="wind_speed2" ><small
+                                            class="text-muted fw-light">Km/hrs</small></h1>
+                                    <ul class="list-unstyled mt-3 mb-4">
+                                        <li>Wind Speed : <span id="wind_speed" ></span></li>
+                                        <li>Wind Degrees : <span id="wind_degrees" ></span></li>
+                                        <li>Sunrise : <span id="sunrise" ></span></li>
+                                        <li>Sunset  : <span id="sunset" ></span></li>
+                                    </ul>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="display-6 text-center mb-4">Compare plans</h2>
+
+                    <div class="table-responsive">
+                        <table class="table text-center">
+                            <thead>
+                                <tr>
+                                    <br>
+                                    <th style="width: 13%;">CLOUD_PCT</th>
+                                    <th style="width: 13%;">FEELS_LIKE</th>
+                                    <th style="width: 13%;">HUMIDITY</th>
+                                    <th style="width: 15%;">MAX_TEMP</th>
+                                    <th style="width: 15%;">MIN_TEMP</th>
+                                    <th style="width: 15%;">TEMP </th>
+                                    <th style="width: 15%;">WIND_DEGREES</th> 
+                                    <th style="width: 15%;">SUNRISE</th> 
+                                    <th style="width: 15%;">SUNSET</th>                             
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="text-start">Pune</th>
+                                    <td><span id="cloud_pct3" ></span></td>
+                                    <td><span id="feels_like3" ></span></td>
+                                    <td><span id="humidity3" ></span></td>
+                                    <td><span id="max_temp3" ></span></td>
+                                    <td><span id="min_temp3" ></span></td>
+                                    <td> <span id="temp3" ></span></td>
+                                    <td> <span id="wind_degrees3" ></span></td>
+                                    <td> <span id="sunrise3" ></span></td>
+                                    <td> <span id="sunset3" ></span></td>
+                                    
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-start">Udaipur</th>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    
+                                </tr>
+                            </tbody>
+
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="text-start">Frankfurt</th>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    
+                                </tr>
+                                
+                                <tr>
+                                    <th scope="row" class="text-start">Kolkata </th>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                </main>
+
+                <footer class="pt-4 my-md-5 pt-md-5 border-top">
+                    <div class="row">
+                        <div class="col-12 col-md">
+                            
+                            <img class="mb-2" src="https://tse3.mm.bing.net/th?id=OIP.G64iG59cEyQnRvQKn7V0uQHaFm&pid=Api&P=0" alt="SK" width="55" height="40">
+                            <div class="bottomconfig">
+                                <small class="d-block mb-3 text-muted">© 2021–2025</small>
+                                <a href=" https://www.linkedin.com/in/sparsh-kumar-10a919226/"> <img src="https://geospatialmedia.s3.amazonaws.com/wp-content/uploads/2018/09/LinkedIN1.png" alt="Linkedin" height="35"/></a>
+                        </div>
+                        </div>
+                      
+                    </div>
+                </footer>
+            </div>
+
+
+
+
+
+        </body>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script src="jsscript.js"> </script>
+</body>
+
+</html>

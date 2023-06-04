@@ -1,0 +1,20 @@
+cloud_pct.innerHTML = response.cloud_pct
+  temp.innerHTML = response.temp
+  feels_like.innerHTML = response.feels_like
+  humidity.innerHTML = response.humidity
+  min_temp.innerHTML = response.min_temp
+  max_temp.innerHTML = response.max_temp
+  wind_speed.innerHTML = response.wind_speed
+  wind_degrees.innerHTML = response.wind_degrees
+  sunrise.innerHTML = response.sunrise
+  sunset.innerHTML = response.sunset
+
+
+  <button class="btn btn-outline-success" type="submit" id="home">Home</button>
+
+  abt.addEventListener('click', inputMsg);
+  function inputMsg() {
+      let name = alert('This Weather App is a mobile application that provides users with information about the current weather conditions and forecasts for a specific location. The app may use data from weather stations, satellite imagery, and other sources to provide real-time updates and accurate predictions for temperature, precipitation, wind speed and direction, humidity, and other weather variables. Users can typically customize the app to display information for their current location or for a specific location of their choice.');
+  
+  }
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS tutorial</title>
+
+
+  <style>
+<!--    body {-->
+<!--    background :blue;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+<!--p {-->
+<!--background : blue;-->
+<!--}-->
+<!--with this all paragraph will have same color in it-->
+<!--&lt;!&ndash;ID is used to target one element and class is used to target grp of elements...-->
+<!--id is defined with # symbol and class with . symbol it contains its definition not crrctly written in program check it&ndash;&gt; -->
+
+.class{
+    color:red;
+}
+
+</style>
+</head>
+<body>
+<p id= 'hii'> This is for id demo </p>
+<p class= 'red'> This is for id demo </p>
+</body>
+</html>
